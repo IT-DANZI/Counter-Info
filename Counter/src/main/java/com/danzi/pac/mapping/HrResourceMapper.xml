@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.danzi.pac.dao.HrResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.danzi.pac.domain.HrResource" >
+    <id column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="ID" property="id" jdbcType="INTEGER" />
+    <result column="NEWPASSWORD" property="newpassword" jdbcType="VARCHAR" />
+    <result column="OLDPASSWORD" property="oldpassword" jdbcType="VARCHAR" />
+    <result column="USER" property="user" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="LOGIN_TIME" property="loginTime" jdbcType="TIMESTAMP" />
+    <result column="OUT_TIME" property="outTime" jdbcType="TIMESTAMP" />
+    <result column="MAXLOGIN" property="maxlogin" jdbcType="INTEGER" />
+    <result column="ONLINE" property="online" jdbcType="INTEGER" />
+    <result column="LOGINIP" property="loginip" jdbcType="VARCHAR" />
+    <result column="USERSTATUS" property="userstatus" jdbcType="INTEGER" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="HrResourcecol1" property="hrresourcecol1" jdbcType="VARCHAR" />
+    <result column="HrResourcecol2" property="hrresourcecol2" jdbcType="VARCHAR" />
+    <result column="HrResourcecol3" property="hrresourcecol3" jdbcType="VARCHAR" />
+    <result column="HrResourcecol4" property="hrresourcecol4" jdbcType="VARCHAR" />
+    <result column="HrResourcecol5" property="hrresourcecol5" jdbcType="VARCHAR" />
+    <result column="HrResourcecol6" property="hrresourcecol6" jdbcType="VARCHAR" />
+    <result column="HrResourcecol7" property="hrresourcecol7" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME_STR" property="createTimeStr" jdbcType="VARCHAR" />
+    <result column="LOGIN_TIME_STR" property="loginTimeStr" jdbcType="VARCHAR" />
+    <result column="OUT_TIME_STR" property="outTimeStr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    USERNAME, ID, NEWPASSWORD, OLDPASSWORD, USER, CREATE_TIME, LOGIN_TIME, OUT_TIME, 
+    MAXLOGIN, ONLINE, LOGINIP, USERSTATUS, PHONE, EMAIL, HrResourcecol1, HrResourcecol2, 
+    HrResourcecol3, HrResourcecol4, HrResourcecol5, HrResourcecol6, HrResourcecol7, CREATE_TIME_STR, 
+    LOGIN_TIME_STR, OUT_TIME_STR
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Pac_HrResource
+    where USERNAME = #{username,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Pac_HrResource
+    where USERNAME = #{username,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.danzi.pac.domain.HrResource" >
+    insert into Pac_HrResource (USERNAME, ID, NEWPASSWORD, 
+      OLDPASSWORD, USER, CREATE_TIME, 
+      LOGIN_TIME, OUT_TIME, MAXLOGIN, 
+      ONLINE, LOGINIP, USERSTATUS, 
+      PHONE, EMAIL, HrResourcecol1, 
+      HrResourcecol2, HrResourcecol3, HrResourcecol4, 
+      HrResourcecol5, HrResourcecol6, HrResourcecol7, 
+      CREATE_TIME_STR, LOGIN_TIME_STR, OUT_TIME_STR
+      )
+    values (#{username,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, #{newpassword,jdbcType=VARCHAR}, 
+      #{oldpassword,jdbcType=VARCHAR}, #{user,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{loginTime,jdbcType=TIMESTAMP}, #{outTime,jdbcType=TIMESTAMP}, #{maxlogin,jdbcType=INTEGER}, 
+      #{online,jdbcType=INTEGER}, #{loginip,jdbcType=VARCHAR}, #{userstatus,jdbcType=INTEGER}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{hrresourcecol1,jdbcType=VARCHAR}, 
+      #{hrresourcecol2,jdbcType=VARCHAR}, #{hrresourcecol3,jdbcType=VARCHAR}, #{hrresourcecol4,jdbcType=VARCHAR}, 
+      #{hrresourcecol5,jdbcType=VARCHAR}, #{hrresourcecol6,jdbcType=VARCHAR}, #{hrresourcecol7,jdbcType=VARCHAR}, 
+      #{createTimeStr,jdbcType=VARCHAR}, #{loginTimeStr,jdbcType=VARCHAR}, #{outTimeStr,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.danzi.pac.domain.HrResource" >
+    insert into Pac_HrResource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="newpassword != null" >
+        NEWPASSWORD,
+      </if>
+      <if test="oldpassword != null" >
+        OLDPASSWORD,
+      </if>
+      <if test="user != null" >
+        USER,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="loginTime != null" >
+        LOGIN_TIME,
+      </if>
+      <if test="outTime != null" >
+        OUT_TIME,
+      </if>
+      <if test="maxlogin != null" >
+        MAXLOGIN,
+      </if>
+      <if test="online != null" >
+        ONLINE,
+      </if>
+      <if test="loginip != null" >
+        LOGINIP,
+      </if>
+      <if test="userstatus != null" >
+        USERSTATUS,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="hrresourcecol1 != null" >
+        HrResourcecol1,
+      </if>
+      <if test="hrresourcecol2 != null" >
+        HrResourcecol2,
+      </if>
+      <if test="hrresourcecol3 != null" >
+        HrResourcecol3,
+      </if>
+      <if test="hrresourcecol4 != null" >
+        HrResourcecol4,
+      </if>
+      <if test="hrresourcecol5 != null" >
+        HrResourcecol5,
+      </if>
+      <if test="hrresourcecol6 != null" >
+        HrResourcecol6,
+      </if>
+      <if test="hrresourcecol7 != null" >
+        HrResourcecol7,
+      </if>
+      <if test="createTimeStr != null" >
+        CREATE_TIME_STR,
+      </if>
+      <if test="loginTimeStr != null" >
+        LOGIN_TIME_STR,
+      </if>
+      <if test="outTimeStr != null" >
+        OUT_TIME_STR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="newpassword != null" >
+        #{newpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="oldpassword != null" >
+        #{oldpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null" >
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTime != null" >
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outTime != null" >
+        #{outTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maxlogin != null" >
+        #{maxlogin,jdbcType=INTEGER},
+      </if>
+      <if test="online != null" >
+        #{online,jdbcType=INTEGER},
+      </if>
+      <if test="loginip != null" >
+        #{loginip,jdbcType=VARCHAR},
+      </if>
+      <if test="userstatus != null" >
+        #{userstatus,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol1 != null" >
+        #{hrresourcecol1,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol2 != null" >
+        #{hrresourcecol2,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol3 != null" >
+        #{hrresourcecol3,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol4 != null" >
+        #{hrresourcecol4,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol5 != null" >
+        #{hrresourcecol5,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol6 != null" >
+        #{hrresourcecol6,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol7 != null" >
+        #{hrresourcecol7,jdbcType=VARCHAR},
+      </if>
+      <if test="createTimeStr != null" >
+        #{createTimeStr,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTimeStr != null" >
+        #{loginTimeStr,jdbcType=VARCHAR},
+      </if>
+      <if test="outTimeStr != null" >
+        #{outTimeStr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.danzi.pac.domain.HrResource" >
+    update Pac_HrResource
+    <set >
+      <if test="id != null" >
+        ID = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="newpassword != null" >
+        NEWPASSWORD = #{newpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="oldpassword != null" >
+        OLDPASSWORD = #{oldpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="user != null" >
+        USER = #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTime != null" >
+        LOGIN_TIME = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="outTime != null" >
+        OUT_TIME = #{outTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maxlogin != null" >
+        MAXLOGIN = #{maxlogin,jdbcType=INTEGER},
+      </if>
+      <if test="online != null" >
+        ONLINE = #{online,jdbcType=INTEGER},
+      </if>
+      <if test="loginip != null" >
+        LOGINIP = #{loginip,jdbcType=VARCHAR},
+      </if>
+      <if test="userstatus != null" >
+        USERSTATUS = #{userstatus,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol1 != null" >
+        HrResourcecol1 = #{hrresourcecol1,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol2 != null" >
+        HrResourcecol2 = #{hrresourcecol2,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol3 != null" >
+        HrResourcecol3 = #{hrresourcecol3,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol4 != null" >
+        HrResourcecol4 = #{hrresourcecol4,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol5 != null" >
+        HrResourcecol5 = #{hrresourcecol5,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol6 != null" >
+        HrResourcecol6 = #{hrresourcecol6,jdbcType=VARCHAR},
+      </if>
+      <if test="hrresourcecol7 != null" >
+        HrResourcecol7 = #{hrresourcecol7,jdbcType=VARCHAR},
+      </if>
+      <if test="createTimeStr != null" >
+        CREATE_TIME_STR = #{createTimeStr,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTimeStr != null" >
+        LOGIN_TIME_STR = #{loginTimeStr,jdbcType=VARCHAR},
+      </if>
+      <if test="outTimeStr != null" >
+        OUT_TIME_STR = #{outTimeStr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USERNAME = #{username,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.danzi.pac.domain.HrResource" >
+    update Pac_HrResource
+    set ID = #{id,jdbcType=INTEGER},
+      NEWPASSWORD = #{newpassword,jdbcType=VARCHAR},
+      OLDPASSWORD = #{oldpassword,jdbcType=VARCHAR},
+      USER = #{user,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      LOGIN_TIME = #{loginTime,jdbcType=TIMESTAMP},
+      OUT_TIME = #{outTime,jdbcType=TIMESTAMP},
+      MAXLOGIN = #{maxlogin,jdbcType=INTEGER},
+      ONLINE = #{online,jdbcType=INTEGER},
+      LOGINIP = #{loginip,jdbcType=VARCHAR},
+      USERSTATUS = #{userstatus,jdbcType=INTEGER},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      HrResourcecol1 = #{hrresourcecol1,jdbcType=VARCHAR},
+      HrResourcecol2 = #{hrresourcecol2,jdbcType=VARCHAR},
+      HrResourcecol3 = #{hrresourcecol3,jdbcType=VARCHAR},
+      HrResourcecol4 = #{hrresourcecol4,jdbcType=VARCHAR},
+      HrResourcecol5 = #{hrresourcecol5,jdbcType=VARCHAR},
+      HrResourcecol6 = #{hrresourcecol6,jdbcType=VARCHAR},
+      HrResourcecol7 = #{hrresourcecol7,jdbcType=VARCHAR},
+      CREATE_TIME_STR = #{createTimeStr,jdbcType=VARCHAR},
+      LOGIN_TIME_STR = #{loginTimeStr,jdbcType=VARCHAR},
+      OUT_TIME_STR = #{outTimeStr,jdbcType=VARCHAR}
+    where USERNAME = #{username,jdbcType=VARCHAR}
+  </update>
+</mapper>

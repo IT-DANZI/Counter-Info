@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.danzi.pac.dao.ProRecordMainMapper" >
+  <resultMap id="BaseResultMap" type="com.danzi.pac.domain.ProRecordMain" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="OWERID" property="owerid" jdbcType="VARCHAR" />
+    <result column="PRODUCTCODE" property="productcode" jdbcType="VARCHAR" />
+    <result column="PRODUCTNAME" property="productname" jdbcType="VARCHAR" />
+    <result column="PACKAGCODING" property="packagcoding" jdbcType="VARCHAR" />
+    <result column="PACKAGPRO" property="packagpro" jdbcType="VARCHAR" />
+    <result column="OLDCODING" property="oldcoding" jdbcType="VARCHAR" />
+    <result column="FILING_TIME" property="filingTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="USER" property="user" jdbcType="VARCHAR" />
+    <result column="DELSTATUS" property="delstatus" jdbcType="INTEGER" />
+    <result column="UPDATEUSER" property="updateuser" jdbcType="VARCHAR" />
+    <result column="ProRecordcol1" property="prorecordcol1" jdbcType="VARCHAR" />
+    <result column="ProRecordcol2" property="prorecordcol2" jdbcType="VARCHAR" />
+    <result column="ProRecordcol3" property="prorecordcol3" jdbcType="VARCHAR" />
+    <result column="ProRecordcol4" property="prorecordcol4" jdbcType="VARCHAR" />
+    <result column="ProRecordcol5" property="prorecordcol5" jdbcType="VARCHAR" />
+    <result column="ProRecordcol6" property="prorecordcol6" jdbcType="VARCHAR" />
+    <result column="FILING_TIME_STR" property="filingTimeStr" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME_STR" property="updateTimeStr" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME_STR" property="createTimeStr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, OWERID, PRODUCTCODE, PRODUCTNAME, PACKAGCODING, PACKAGPRO, OLDCODING, FILING_TIME, 
+    UPDATE_TIME, CREATE_TIME, USER, DELSTATUS, UPDATEUSER, ProRecordcol1, ProRecordcol2, 
+    ProRecordcol3, ProRecordcol4, ProRecordcol5, ProRecordcol6, FILING_TIME_STR, UPDATE_TIME_STR, 
+    CREATE_TIME_STR
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from Pac_ProRecordMain
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="showAllProRecordMain" resultMap="BaseResultMap" parameterType="com.danzi.pac.domain.ProRecordMain">
+    select
+    <include refid="Base_Column_List" />
+    from Pac_ProRecordMain
+    WHERE DELSTATUS = 1
+    <if test="id != null" >
+    AND  ID = #{id,jdbcType=INTEGER}
+    </if>
+  </select>
+  <select id="showProRecordMainByProcodeAndPackcode" resultMap="BaseResultMap" parameterType="com.danzi.pac.domain.ProRecordMain">
+    select
+    <include refid="Base_Column_List" />
+    from Pac_ProRecordMain
+    WHERE DELSTATUS = 1 AND PRODUCTCODE = #{productcode,jdbcType=VARCHAR} AND PACKAGCODING = #{packagcoding,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from Pac_ProRecordMain
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.danzi.pac.domain.ProRecordMain" >
+    insert into Pac_ProRecordMain (ID, OWERID, PRODUCTCODE, 
+      PRODUCTNAME, PACKAGCODING, PACKAGPRO, 
+      OLDCODING, FILING_TIME, UPDATE_TIME, 
+      CREATE_TIME, USER, DELSTATUS, 
+      UPDATEUSER, ProRecordcol1, ProRecordcol2, 
+      ProRecordcol3, ProRecordcol4, ProRecordcol5, 
+      ProRecordcol6, FILING_TIME_STR, UPDATE_TIME_STR, 
+      CREATE_TIME_STR)
+    values (#{id,jdbcType=INTEGER}, #{owerid,jdbcType=VARCHAR}, #{productcode,jdbcType=VARCHAR}, 
+      #{productname,jdbcType=VARCHAR}, #{packagcoding,jdbcType=VARCHAR}, #{packagpro,jdbcType=VARCHAR}, 
+      #{oldcoding,jdbcType=VARCHAR}, #{filingTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{user,jdbcType=VARCHAR}, #{delstatus,jdbcType=INTEGER}, 
+      #{updateuser,jdbcType=VARCHAR}, #{prorecordcol1,jdbcType=VARCHAR}, #{prorecordcol2,jdbcType=VARCHAR}, 
+      #{prorecordcol3,jdbcType=VARCHAR}, #{prorecordcol4,jdbcType=VARCHAR}, #{prorecordcol5,jdbcType=VARCHAR}, 
+      #{prorecordcol6,jdbcType=VARCHAR}, #{filingTimeStr,jdbcType=VARCHAR}, #{updateTimeStr,jdbcType=VARCHAR}, 
+      #{createTimeStr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.danzi.pac.domain.ProRecordMain" >
+    insert into Pac_ProRecordMain
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="owerid != null" >
+        OWERID,
+      </if>
+      <if test="productcode != null" >
+        PRODUCTCODE,
+      </if>
+      <if test="productname != null" >
+        PRODUCTNAME,
+      </if>
+      <if test="packagcoding != null" >
+        PACKAGCODING,
+      </if>
+      <if test="packagpro != null" >
+        PACKAGPRO,
+      </if>
+      <if test="oldcoding != null" >
+        OLDCODING,
+      </if>
+      <if test="filingTime != null" >
+        FILING_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="user != null" >
+        USER,
+      </if>
+      <if test="delstatus != null" >
+        DELSTATUS,
+      </if>
+      <if test="updateuser != null" >
+        UPDATEUSER,
+      </if>
+      <if test="prorecordcol1 != null" >
+        ProRecordcol1,
+      </if>
+      <if test="prorecordcol2 != null" >
+        ProRecordcol2,
+      </if>
+      <if test="prorecordcol3 != null" >
+        ProRecordcol3,
+      </if>
+      <if test="prorecordcol4 != null" >
+        ProRecordcol4,
+      </if>
+      <if test="prorecordcol5 != null" >
+        ProRecordcol5,
+      </if>
+      <if test="prorecordcol6 != null" >
+        ProRecordcol6,
+      </if>
+      <if test="filingTimeStr != null" >
+        FILING_TIME_STR,
+      </if>
+      <if test="updateTimeStr != null" >
+        UPDATE_TIME_STR,
+      </if>
+      <if test="createTimeStr != null" >
+        CREATE_TIME_STR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="owerid != null" >
+        #{owerid,jdbcType=VARCHAR},
+      </if>
+      <if test="productcode != null" >
+        #{productcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="packagcoding != null" >
+        #{packagcoding,jdbcType=VARCHAR},
+      </if>
+      <if test="packagpro != null" >
+        #{packagpro,jdbcType=VARCHAR},
+      </if>
+      <if test="oldcoding != null" >
+        #{oldcoding,jdbcType=VARCHAR},
+      </if>
+      <if test="filingTime != null" >
+        #{filingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user != null" >
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="delstatus != null" >
+        #{delstatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateuser != null" >
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="prorecordcol1 != null" >
+        #{prorecordcol1,jdbcType=VARCHAR},
+      </if>
+      <if test="prorecordcol2 != null" >
+        #{prorecordcol2,jdbcType=VARCHAR},
+      </if>
+      <if test="prorecordcol3 != null" >
+        #{prorecordcol3,jdbcType=VARCHAR},
+      </if>
+      <if test="prorecordcol4 != null" >
+        #{prorecordcol4,jdbcType=VARCHAR},
+      </if>
+      <if test="prorecordcol5 != null" >
+        #{prorecordcol5,jdbcType=VARCHAR},
+      </if>
+      <if test="prorecordcol6 != null" >
+        #{prorecordcol6,jdbcType=VARCHAR},
+      </if>
+      <if test="filingTimeStr != null" >
+        #{filingTimeStr,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTimeStr != null" >
+        #{updateTimeStr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTimeStr != null" >
+        #{createTimeStr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.danzi.pac.domain.ProRecordMain" >
+    update Pac_ProRecordMain
+    <set >
+      <if test="owerid != null" >
+        OWERID = #{owerid,jdbcType=VARCHAR},
+      </if>
+      <if test="productcode != null" >
+        PRODUCTCODE = #{productcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        PRODUCTNAME = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="packagcoding != null" >
+        PACKAGCODING = #{packagcoding,jdbcType=VARCHAR},
+      </if>
+      <if test="packagpro != null" >
+        PACKAGPRO = #{packagpro,jdbcType=VARCHAR},
+      </if>
+      <if test="oldcoding != null" >
+        OLDCODING = #{oldcoding,jdbcType=VARCHAR},
+      </if>
+      <if test="filingTime != null" >
+        FILING_TIME = #{filingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="user != null" >
+        USER = #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="delstatus != null" >
+        DELSTATUS = #{delstatus,jdbcType=INTEGER},
+      </if>
+      <if test="updateuser != null" >
+        UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="prorecordcol1 != null" >
+        ProRecordcol1 = #{prorecordcol1,jdbcType=VARCHAR},
+      </if>
+      <if test="prorecordcol2 != null" >
+        ProRecordcol2 = #{prorecordcol2,jdbcType=VARCHAR},
+      </if>
+      <if test="prorecordcol3 != null" >
+        ProRecordcol3 = #{prorecordcol3,jdbcType=VARCHAR},
+      </if>
+      <if test="prorecordcol4 != null" >
+        ProRecordcol4 = #{prorecordcol4,jdbcType=VARCHAR},
+      </if>
+      <if test="prorecordcol5 != null" >
+        ProRecordcol5 = #{prorecordcol5,jdbcType=VARCHAR},
+      </if>
+      <if test="prorecordcol6 != null" >
+        ProRecordcol6 = #{prorecordcol6,jdbcType=VARCHAR},
+      </if>
+      <if test="filingTimeStr != null" >
+        FILING_TIME_STR = #{filingTimeStr,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTimeStr != null" >
+        UPDATE_TIME_STR = #{updateTimeStr,jdbcType=VARCHAR},
+      </if>
+      <if test="createTimeStr != null" >
+        CREATE_TIME_STR = #{createTimeStr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.danzi.pac.domain.ProRecordMain" >
+    update Pac_ProRecordMain
+    set OWERID = #{owerid,jdbcType=VARCHAR},
+      PRODUCTCODE = #{productcode,jdbcType=VARCHAR},
+      PRODUCTNAME = #{productname,jdbcType=VARCHAR},
+      PACKAGCODING = #{packagcoding,jdbcType=VARCHAR},
+      PACKAGPRO = #{packagpro,jdbcType=VARCHAR},
+      OLDCODING = #{oldcoding,jdbcType=VARCHAR},
+      FILING_TIME = #{filingTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      USER = #{user,jdbcType=VARCHAR},
+      DELSTATUS = #{delstatus,jdbcType=INTEGER},
+      UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      ProRecordcol1 = #{prorecordcol1,jdbcType=VARCHAR},
+      ProRecordcol2 = #{prorecordcol2,jdbcType=VARCHAR},
+      ProRecordcol3 = #{prorecordcol3,jdbcType=VARCHAR},
+      ProRecordcol4 = #{prorecordcol4,jdbcType=VARCHAR},
+      ProRecordcol5 = #{prorecordcol5,jdbcType=VARCHAR},
+      ProRecordcol6 = #{prorecordcol6,jdbcType=VARCHAR},
+      FILING_TIME_STR = #{filingTimeStr,jdbcType=VARCHAR},
+      UPDATE_TIME_STR = #{updateTimeStr,jdbcType=VARCHAR},
+      CREATE_TIME_STR = #{createTimeStr,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

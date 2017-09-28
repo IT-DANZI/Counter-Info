@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>丹姿综合管理系统</title>
+    <meta
+            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+            name="viewport">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="../manager/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../manager/dist/css/_all-skins.min.css">
+    <link rel="stylesheet"
+          href="../manager/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet"
+          href="../manager/plugins/daterangepicker/daterangepicker-bs3.css">
+    <link rel="stylesheet" href="../manager/bootstrap/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="../manager/dist/css/bootstrap.min.css">-->
+    <!-- jQuery 2.1.4 -->
+    <script src="../manager/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="../manager/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper" ng-app="">
+    <header class="main-header">
+        <a href="../manager/index.html" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"></span> <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>丹姿综合管理系统</b></span>
+        </a>
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas"
+               role="button"> <span class="sr-only">Toggle navigation</span>
+            </a>
+            <div class="navbar-custom-menu" ng-include="'header.html'">
+            </div>
+        </nav>
+    </header>
+    <aside class="main-sidebar" ng-include="'aside.html'"></aside>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h2></h2>
+            <ol class="breadcrumb">
+                <li><a href="../manager/index_counter.html"><i
+                        class="fa fa-dashboard"></i>柜台信息</a></li>
+                <li>柜台信息录入</li>
+            </ol>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <!-- Horizontal Form -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title"></h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form class="form-horizontal" onsubmit="return check()" method="post"
+                      enctype="multipart/form-data">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">柜台编码</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="productsCode" class="form-control" name="productsCode">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">柜台放置地</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="productsName" class="form-control" name="productsName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">柜台所粘代言人</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="bomCode" class="form-control" name="bomCode">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">长</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="long" class="form-control" name="productsPri">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">宽</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="wide" class="form-control" name="productsPri">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">高</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="height" class="form-control" name="productsPri">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">重量</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="weight" class="form-control" name="productsPri">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">价格</label>
+                            <div class="col-sm-6">
+                                <input type="text" id="price" class="form-control" name="productsPri">
+                            </div>
+                        </div>
+
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <div class="col-sm-6">
+                                <button type="reset"
+                                        class="col-sm-2 btn btn-default pull-right">取消
+                                </button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button type="submit" class="col-sm-2 btn btn-info">提交</button>
+                            </div>
+                        </div>
+                        <!-- /.box-footer -->
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+</div>
+<!-- ./wrapper -->
+<script src="../manager/dist/js/angular.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../manager/dist/js/app.min.js"></script>
+<!-- DataTables -->
+<script src="../manager/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../manager/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- date-range-picker -->
+<script src="../manager/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="../manager/dist/js/inputGroup.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //Date range picker
+        $('#reservation').daterangepicker();
+        $('.input-group-add').initInputGroup({
+            'text1': '审查状态',
+            'text2': '生产地',
+            'selectName': '',
+            'inputName': ''
+        });
+        $('.input-group-addone').initInputGroup({
+            'text1': '备案状态',
+            'text2': '生产地',
+            'selectName': '',
+            'inputName': ''
+        });
+        $('.input-group-addthree').initInputGroup({
+            'text1': '备案状态',
+            'text2': '备案系统链接',
+            'selectName': '',
+            'inputName': ''
+        });
+    });
+</script>
+<script type="text/javascript">
+    function check() {
+
+    }
+</script>
+</body>
+</html>

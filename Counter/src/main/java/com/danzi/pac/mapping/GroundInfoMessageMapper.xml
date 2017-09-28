@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.danzi.pac.dao.GroundInfoMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.danzi.pac.domain.GroundInfoMessage" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="MAINID" property="mainid" jdbcType="INTEGER" />
+    <result column="BORNSPACE" property="bornspace" jdbcType="VARCHAR" />
+    <result column="IFSTATUS" property="ifstatus" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATEUSER" property="updateuser" jdbcType="VARCHAR" />
+    <result column="DELSTATUS" property="delstatus" jdbcType="INTEGER" />
+    <result column="SysMessagecol1" property="sysmessagecol1" jdbcType="VARCHAR" />
+    <result column="SysMessagecol2" property="sysmessagecol2" jdbcType="VARCHAR" />
+    <result column="SysMessagecol3" property="sysmessagecol3" jdbcType="VARCHAR" />
+    <result column="SysMessagecol4" property="sysmessagecol4" jdbcType="VARCHAR" />
+    <result column="SysMessagecol5" property="sysmessagecol5" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME_STR" property="createTimeStr" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME_STR" property="updateTimeStr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, MAINID, BORNSPACE, IFSTATUS, CREATE_TIME, UPDATE_TIME, UPDATEUSER, DELSTATUS, 
+    SysMessagecol1, SysMessagecol2, SysMessagecol3, SysMessagecol4, SysMessagecol5, CREATE_TIME_STR, 
+    UPDATE_TIME_STR
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from Pac_GroundInfoMessage
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from Pac_GroundInfoMessage
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.danzi.pac.domain.GroundInfoMessage" >
+    insert into Pac_GroundInfoMessage (ID, MAINID, BORNSPACE, 
+      IFSTATUS, CREATE_TIME, UPDATE_TIME, 
+      UPDATEUSER, DELSTATUS, SysMessagecol1, 
+      SysMessagecol2, SysMessagecol3, SysMessagecol4, 
+      SysMessagecol5, CREATE_TIME_STR, UPDATE_TIME_STR
+      )
+    values (#{id,jdbcType=INTEGER}, #{mainid,jdbcType=INTEGER}, #{bornspace,jdbcType=VARCHAR}, 
+      #{ifstatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updateuser,jdbcType=VARCHAR}, #{delstatus,jdbcType=INTEGER}, #{sysmessagecol1,jdbcType=VARCHAR}, 
+      #{sysmessagecol2,jdbcType=VARCHAR}, #{sysmessagecol3,jdbcType=VARCHAR}, #{sysmessagecol4,jdbcType=VARCHAR}, 
+      #{sysmessagecol5,jdbcType=VARCHAR}, #{createTimeStr,jdbcType=VARCHAR}, #{updateTimeStr,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.danzi.pac.domain.GroundInfoMessage" >
+    insert into Pac_GroundInfoMessage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="mainid != null" >
+        MAINID,
+      </if>
+      <if test="bornspace != null" >
+        BORNSPACE,
+      </if>
+      <if test="ifstatus != null" >
+        IFSTATUS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="updateuser != null" >
+        UPDATEUSER,
+      </if>
+      <if test="delstatus != null" >
+        DELSTATUS,
+      </if>
+      <if test="sysmessagecol1 != null" >
+        SysMessagecol1,
+      </if>
+      <if test="sysmessagecol2 != null" >
+        SysMessagecol2,
+      </if>
+      <if test="sysmessagecol3 != null" >
+        SysMessagecol3,
+      </if>
+      <if test="sysmessagecol4 != null" >
+        SysMessagecol4,
+      </if>
+      <if test="sysmessagecol5 != null" >
+        SysMessagecol5,
+      </if>
+      <if test="createTimeStr != null" >
+        CREATE_TIME_STR,
+      </if>
+      <if test="updateTimeStr != null" >
+        UPDATE_TIME_STR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mainid != null" >
+        #{mainid,jdbcType=INTEGER},
+      </if>
+      <if test="bornspace != null" >
+        #{bornspace,jdbcType=VARCHAR},
+      </if>
+      <if test="ifstatus != null" >
+        #{ifstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuser != null" >
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="delstatus != null" >
+        #{delstatus,jdbcType=INTEGER},
+      </if>
+      <if test="sysmessagecol1 != null" >
+        #{sysmessagecol1,jdbcType=VARCHAR},
+      </if>
+      <if test="sysmessagecol2 != null" >
+        #{sysmessagecol2,jdbcType=VARCHAR},
+      </if>
+      <if test="sysmessagecol3 != null" >
+        #{sysmessagecol3,jdbcType=VARCHAR},
+      </if>
+      <if test="sysmessagecol4 != null" >
+        #{sysmessagecol4,jdbcType=VARCHAR},
+      </if>
+      <if test="sysmessagecol5 != null" >
+        #{sysmessagecol5,jdbcType=VARCHAR},
+      </if>
+      <if test="createTimeStr != null" >
+        #{createTimeStr,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTimeStr != null" >
+        #{updateTimeStr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.danzi.pac.domain.GroundInfoMessage" >
+    update Pac_GroundInfoMessage
+    <set >
+      <if test="mainid != null" >
+        MAINID = #{mainid,jdbcType=INTEGER},
+      </if>
+      <if test="bornspace != null" >
+        BORNSPACE = #{bornspace,jdbcType=VARCHAR},
+      </if>
+      <if test="ifstatus != null" >
+        IFSTATUS = #{ifstatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuser != null" >
+        UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="delstatus != null" >
+        DELSTATUS = #{delstatus,jdbcType=INTEGER},
+      </if>
+      <if test="sysmessagecol1 != null" >
+        SysMessagecol1 = #{sysmessagecol1,jdbcType=VARCHAR},
+      </if>
+      <if test="sysmessagecol2 != null" >
+        SysMessagecol2 = #{sysmessagecol2,jdbcType=VARCHAR},
+      </if>
+      <if test="sysmessagecol3 != null" >
+        SysMessagecol3 = #{sysmessagecol3,jdbcType=VARCHAR},
+      </if>
+      <if test="sysmessagecol4 != null" >
+        SysMessagecol4 = #{sysmessagecol4,jdbcType=VARCHAR},
+      </if>
+      <if test="sysmessagecol5 != null" >
+        SysMessagecol5 = #{sysmessagecol5,jdbcType=VARCHAR},
+      </if>
+      <if test="createTimeStr != null" >
+        CREATE_TIME_STR = #{createTimeStr,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTimeStr != null" >
+        UPDATE_TIME_STR = #{updateTimeStr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.danzi.pac.domain.GroundInfoMessage" >
+    update Pac_GroundInfoMessage
+    set MAINID = #{mainid,jdbcType=INTEGER},
+      BORNSPACE = #{bornspace,jdbcType=VARCHAR},
+      IFSTATUS = #{ifstatus,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      UPDATEUSER = #{updateuser,jdbcType=VARCHAR},
+      DELSTATUS = #{delstatus,jdbcType=INTEGER},
+      SysMessagecol1 = #{sysmessagecol1,jdbcType=VARCHAR},
+      SysMessagecol2 = #{sysmessagecol2,jdbcType=VARCHAR},
+      SysMessagecol3 = #{sysmessagecol3,jdbcType=VARCHAR},
+      SysMessagecol4 = #{sysmessagecol4,jdbcType=VARCHAR},
+      SysMessagecol5 = #{sysmessagecol5,jdbcType=VARCHAR},
+      CREATE_TIME_STR = #{createTimeStr,jdbcType=VARCHAR},
+      UPDATE_TIME_STR = #{updateTimeStr,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

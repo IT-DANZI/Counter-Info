@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="Counter" />
+        <module name="PAC" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Counter" target="1.5" />
+      <module name="Counter" target="1.6" />
+      <module name="PAC" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>
